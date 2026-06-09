@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>RYAN ENTERPRISE | FREE FIRE · COD · FORTNITE · MINECRAFT · ROBLOX · BUSSID · PAYBACK 2 + PREMIUM</title>
+    <!-- Google Fonts: Cyberpunk -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* hide default cursor */
+        }
+
+        body {
+            background: #01020a;
+            font-family: 'Inter', sans-serif;
+            color: #eef5ff;
+            overflow-x: hidden;
+        }
+
+        /* ===== ONLY ARROW CURSOR (no circle) ===== */
+        .custom-cursor {
+            position: fixed;
+            width: 26px;
+            height: 26px;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s linear;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230afff0'%3E%3Cpath d='M4.5 3.5L19.5 12L14 14L12 19.5L3.5 4.5Z' stroke='%230afff0' stroke-width='0.8' fill='%230afff0' fill-opacity='0.9' /%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 5px cyan) drop-shadow(0 0 2px #0afff0);
+        }
+
+        /* animated grid background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(15, 255, 220, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 255, 220, 0.08) 1px, transparent 1px);
+            background-size: 45px 45px;
+            z-index: -2;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { transform: translate(0,0);}
+            100% { transform: translate(45px, 45px);}
+        }
+
+        .glow-orb {
+            position: fixed;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(0, 255, 200, 0.12), rgba(0,0,0,0) 70%);
+            top: -20%;
+            left: -30%;
+            filter: blur(100px);
+            z-index: -1;
+        }
+        .glow-orb2 {
+            bottom: -20%;
+            right: -30%;
+            top: auto;
+            background: radial-gradient(circle, rgba(255, 68, 204, 0.1), transparent);
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.02) 0px, rgba(0, 255, 255, 0.02) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* header */
+        header {
+            padding: 1.3rem 0;
+            backdrop-filter: blur(12px);
+            background: rgba(2, 5, 15, 0.8);
+            border-bottom: 1px solid #0afff0;
+            box-shadow: 0 0 12px rgba(10, 255, 240, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0afff0, #ff44cc, #f0b90b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 8px cyan;
+        }
+        .logo span {
+            font-size: 0.8rem;
+            font-family: 'Share Tech Mono', monospace;
+            color: cyan;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 500;
+            color: #ccddf8;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover {
+            color: #0afff0;
+            text-shadow: 0 0 8px cyan;
+        }
+        .neon-btn {
+            border: 1px solid #0afff0;
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            background: rgba(0, 255, 240, 0.1);
+            transition: 0.3s;
+        }
+        .neon-btn:hover {
+            background: #0afff0;
+            color: #03050b !important;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        /* hero */
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(10, 255, 240, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
+            border: 1px solid cyan;
+            margin-bottom: 1.5rem;
+        }
+        .glitch-text {
+            font-size: 4rem;
+            font-weight: 900;
+            font-family: 'Orbitron';
+            background: linear-gradient(135deg, #fff, #0afff0, #ff44cc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glitch 2s infinite;
+        }
+        @keyframes glitch {
+            0%, 100% { text-shadow: -2px 0 red, 2px 0 cyan; transform: skew(0deg);}
+            25% { text-shadow: 2px 0 red, -2px 0 blue; transform: skew(1deg);}
+            50% { text-shadow: -2px 0 cyan, 2px 0 magenta; transform: skew(-1deg);}
+            75% { text-shadow: 2px 0 magenta, -2px 0 cyan; transform: skew(0.5deg);}
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 1rem auto 2rem;
+            font-size: 1.1rem;
+            color: #b0c7ff;
+        }
+        .btn-neon-primary, .btn-neon-secondary {
+            padding: 0.9rem 2rem;
+            font-family: 'Orbitron', monospace;
+            font-weight: bold;
+            border: none;
+            margin: 0.5rem;
+            transition: 0.2s;
+            cursor: pointer;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+        }
+        .btn-neon-primary {
+            border: 1.5px solid #0afff0;
+            color: #0afff0;
+            box-shadow: 0 0 10px rgba(10,255,240,0.4);
+        }
+        .btn-neon-primary:hover {
+            background: #0afff0;
+            color: black;
+            box-shadow: 0 0 30px cyan;
+        }
+        .btn-neon-secondary {
+            border: 1.5px solid #ff44cc;
+            color: #ff44cc;
+            box-shadow: 0 0 8px #ff44cc;
+        }
+        .btn-neon-secondary:hover {
+            background: #ff44cc;
+            color: black;
+            box-shadow: 0 0 25px #ff44cc;
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2.2rem;
+            font-family: 'Orbitron';
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+        }
+        .section-title i {
+            color: cyan;
+            margin-right: 12px;
+        }
+
+        /* game cards grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .game-card {
+            background: rgba(6, 12, 25, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(10, 255, 240, 0.3);
+            border-radius: 18px;
+            padding: 1.8rem;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.6);
+        }
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: cyan;
+            box-shadow: 0 0 25px rgba(0,255,240,0.4);
+        }
+        .game-icon {
+            font-size: 2.8rem;
+            color: #0afff0;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 6px cyan);
+        }
+        .game-title {
+            font-family: 'Orbitron';
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fff, #0afff0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .game-desc {
+            font-size: 0.85rem;
+            color: #a8bbec;
+            margin: 0.8rem 0;
+        }
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px dashed rgba(0,255,240,0.4);
+            padding-top: 1rem;
+            font-size: 0.75rem;
+        }
+        .play-glow-btn {
+            background: none;
+            border: none;
+            color: #0afff0;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .play-glow-btn:hover {
+            text-shadow: 0 0 8px cyan;
+            letter-spacing: 1px;
+        }
+
+        /* premium subscription card */
+        .premium-card {
+            background: linear-gradient(135deg, rgba(255, 68, 204, 0.2), rgba(10, 255, 240, 0.1));
+            border: 2px solid #ff44cc;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 20px rgba(255, 68, 204, 0.3);
+        }
+        .premium-card h3 {
+            font-size: 1.8rem;
+            font-family: 'Orbitron';
+            margin-bottom: 0.5rem;
+        }
+        .premium-card p {
+            margin-bottom: 1rem;
+            color: #ddddff;
+        }
+        .premium-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .premium-input-group input {
+            background: #0a1426;
+            border: 1px solid #ff44cc;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            color: white;
+            width: 280px;
+            font-family: monospace;
+        }
+        .premium-input-group button {
+            background: #ff44cc;
+            border: none;
+            padding: 0 1.8rem;
+            border-radius: 40px;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .premium-input-group button:hover {
+            background: #ff66dd;
+            box-shadow: 0 0 15px #ff44cc;
+        }
+        .locked-badge {
+            font-size: 0.7rem;
+            background: rgba(255, 68, 204, 0.3);
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+        }
+
+        /* hidden premium games grid */
+        .premium-games-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .premium-games-grid.active {
+            display: grid;
+        }
+
+        /* futuristic stats bar */
+        .futuristic-stats {
+            background: rgba(0, 20, 40, 0.6);
+            border: 1px solid cyan;
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 3rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            backdrop-filter: blur(12px);
+        }
+        .stat-card {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid rgba(0,255,240,0.3);
+        }
+        .stat-card:last-child { border-right: none; }
+        .stat-value {
+            font-size: 2.6rem;
+            font-family: 'Orbitron';
+            font-weight: 800;
+            color: #0afff0;
+        }
+
+        .live-feed {
+            background: #01040e;
+            border-left: 6px solid cyan;
+            padding: 1rem;
+            margin: 2rem 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            border-radius: 12px;
+            animation: pulseGlow 2s infinite;
+        }
+        @keyframes pulseGlow {
+            0% { border-left-color: cyan; box-shadow: 0 0 5px cyan;}
+            100% { border-left-color: #ff44cc; box-shadow: 0 0 15px #ff44cc;}
+        }
+
+        .newsletter {
+            background: linear-gradient(145deg, #071126, #01050e);
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 68, 204, 0.5);
+            margin: 2rem 0;
+        }
+        .news-group {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .news-group input {
+            background: #0a1426;
+            border: 1px solid cyan;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            color: white;
+            width: 260px;
+        }
+        .news-group button {
+            background: #0afff0;
+            border: none;
+            padding: 0 1.8rem;
+            border-radius: 40px;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid cyan;
+            font-size: 0.8rem;
+        }
+        .social-icons i {
+            font-size: 1.3rem;
+            margin: 0 10px;
+            color: cyan;
+            transition: 0.3s;
+        }
+        .social-icons i:hover {
+            color: #ff44cc;
+            text-shadow: 0 0 12px magenta;
+        }
+
+        @media (max-width: 900px) {
+            .glitch-text { font-size: 2.2rem; }
+            .stat-card { border-right: none; margin-bottom: 1rem; }
+            .navbar { flex-direction: column; gap: 1rem; }
+        }
+
+        .toast-future {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0a0f1f;
+            border-left: 6px solid #0afff0;
+            padding: 0.7rem 1.2rem;
+            font-family: monospace;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ONLY ARROW CURSOR (no circle) -->
+<div class="custom-cursor"></div>
+
+<div class="cyber-grid"></div>
+<div class="glow-orb"></div>
+<div class="glow-orb glow-orb2"></div>
+<div class="scanline"></div>
+
+<header>
+    <div class="container navbar">
+        <div class="logo">RYAN <span>// ENTERPRISE // OMEGA</span></div>
+        <div class="nav-links">
+            <a href="#">⟡ NEXUS</a>
+            <a href="#">⚡ ARCADE</a>
+            <a href="#">🏆 RANKINGS</a>
+            <a href="#" class="neon-btn">⟁ JOIN CLAN</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div class="hero-badge"><i class="fas fa-microchip"></i> MULTIVERSE GAMING HUB</div>
+        <div class="glitch-text">RYAN'S ENTERPRISE</div>
+        <p><i class="fas fa-bolt"></i> OFFICIAL DESTINATION FOR <span style="color:#0afff0; font-weight:bold;">FREE FIRE · CALL OF DUTY · FORTNITE · MINECRAFT · ROBLOX · BUSSID · PAYBACK 2</span><br>➕ <span style="color:#ff44cc;">PREMIUM VAULT</span> with 5 extra AAA titles – <strong>Subscribe to unlock!</strong></p>
+        <div>
+            <button class="btn-neon-primary" id="exploreBtn"><i class="fas fa-gamepad"></i> DEPLOY GAMES</button>
+            <button class="btn-neon-secondary" id="discordBtn"><i class="fab fa-discord"></i> COMMS LINK</button>
+        </div>
+    </section>
+
+    <!-- FREE GAMES SECTION -->
+    <div class="section-title"><i class="fas fa-crown"></i> // FREE VAULT // 7 LEGENDARY TITLES</div>
+    <div class="games-grid" id="gamesGrid"></div>
+
+    <!-- PREMIUM SUBSCRIPTION CARD -->
+    <div class="premium-card" id="premiumCard">
+        <h3><i class="fas fa-gem"></i> RYAN+ PREMIUM ACCESS</h3>
+        <p>Subscribe to unlock the <strong>Premium Vault</strong> with 5 extra apps:<br>⚡ APEX LEGENDS · ⚡ VALORANT · ⚡ GENSHIN IMPACT · ⚡ PUBG · ⚡ GRAND THEFT AUTO V</p>
+        <div class="premium-input-group">
+            <input type="email" id="premiumEmail" placeholder="Enter email for premium access">
+            <button id="unlockPremiumBtn">UNLOCK PREMIUM →</button>
+        </div>
+        <div class="locked-badge"><i class="fas fa-lock"></i> Locked – Subscribe to unveil</div>
+    </div>
+
+    <!-- PREMIUM GAMES GRID (initially hidden) -->
+    <div id="premiumGamesContainer" class="premium-games-grid"></div>
+
+    <!-- LIVE STATS -->
+    <div class="futuristic-stats">
+        <div class="stat-card"><div class="stat-value" id="activePlayers">13.2K</div><div><i class="fas fa-users"></i> ACTIVE RYANERS</div></div>
+        <div class="stat-card"><div class="stat-value" id="tourneyCount">34</div><div>LIVE SERVERS</div></div>
+        <div class="stat-card"><div class="stat-value" id="globalRank">#1</div><div>GLOBAL IMPACT</div></div>
+        <div class="stat-card"><div class="stat-value" id="prizePool">$21.8K</div><div>MONTHLY REWARDS</div></div>
+    </div>
+
+    <!-- LIVE FEED -->
+    <div class="live-feed" id="liveFeed">
+        <i class="fas fa-satellite-dish"></i> [LIVE EVENT FEED] <span id="feedMsg">> 🔥 Free Fire tournament: Ryan's squad qualifies for finals! 50+ diamonds prize.</span>
+    </div>
+
+    <!-- NEWSLETTER (normal) -->
+    <div class="newsletter">
+        <i class="fas fa-hourglass-half" style="font-size: 2rem; color: cyan;"></i>
+        <h3>⟁ RYAN'S NEXT SHOWDOWN ⟁</h3>
+        <div style="font-size: 1.8rem; font-family: 'Orbitron'; letter-spacing: 2px;" id="countdownTimer">02d : 11h : 27m : 14s</div>
+        <p style="margin: 1rem;">Subscribe to RGE Intel -> exclusive codes, skins & early access</p>
+        <div class="news-group">
+            <input type="email" id="futuraEmail" placeholder="ryan_agent@enterprise.gg">
+            <button id="futuraSubscribe">SUBSCRIBE</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="social-icons">
+        <i class="fab fa-twitter"></i><i class="fab fa-instagram"></i><i class="fab fa-youtube"></i><i class="fab fa-tiktok"></i><i class="fab fa-discord"></i>
+    </div>
+    <p>© 2025 RYAN ENTERPRISE — Free Fire · Call of Duty · Fortnite · Minecraft · Roblox · BUSSID · Payback 2 + Premium Vault</p>
+    <p><i class="fas fa-shield-alt"></i> PROTECTED BY RYAN FIREWALL v3.0</p>
+</footer>
+<div id="toastFuture" class="toast-future">⚡ SYSTEM READY</div>
+
+<script>
+    // ---------- FREE GAMES (7) ----------
+    const freeGames = [
+        { id: 1, name: "FREE FIRE", genre: "Battle Royale", icon: "fas fa-fire", players: "89.4K online", desc: "Fast-paced 10-minute BR matches. Ryan's exclusive guild gives weekly diamonds.", actionLink: "https://ff.garena.com/", isExternal: true },
+        { id: 2, name: "CALL OF DUTY", genre: "FPS / Military", icon: "fas fa-crosshairs", players: "28.7K online", desc: "Elite tactical shooter. Join Ryan's regiment for ranked matches.", actionLink: "https://www.callofduty.com/", isExternal: true },
+        { id: 3, name: "FORTNITE", genre: "Battle Royale", icon: "fab fa-fort-awesome", players: "42.1K online", desc: "Build, battle, and survive. Ryan's creative cup every weekend.", actionLink: "https://www.fortnite.com/", isExternal: true },
+        { id: 4, name: "MINECRAFT", genre: "Sandbox", icon: "fas fa-cube", players: "35.2K online", desc: "Ryan's Realm: vanilla survival + mini-games.", actionLink: "https://www.minecraft.net/", isExternal: true },
+        { id: 5, name: "ROBLOX", genre: "Metaverse", icon: "fab fa-fort-awesome", players: "56.3K online", desc: "Official Ryan hub: obbies, tycoons, roleplay.", actionLink: "https://www.roblox.com/", isExternal: true },
+        { id: 6, name: "BUSSID", genre: "Simulation", icon: "fas fa-bus", players: "9.8K driving", desc: "Bus Simulator Indonesia. Convoy events & Ryan's fleet.", actionLink: "https://play.google.com/store/apps/details?id=com.maleo.bussimulatorindonesia", isExternal: true },
+        { id: 7, name: "PAYBACK 2", genre: "Action", icon: "fas fa-money-bill-wave", players: "7.4K online", desc: "Mobile crime sandbox. Heists, races, gang wars.", actionLink: "https://play.google.com/store/apps/details?id=com.aapexsoftware.payback2", isExternal: true }
+    ];
+
+    // ---------- PREMIUM GAMES (locked until subscription) ----------
+    const premiumGames = [
+        { id: 8, name: "APEX LEGENDS", genre: "Hero BR", icon: "fas fa-user-astronaut", players: "67.2K online", desc: "Legend-based battle royale. Ryan's Apex squad recruits daily.", actionLink: "https://www.ea.com/games/apex-legends", isExternal: true },
+        { id: 9, name: "VALORANT", genre: "Tactical FPS", icon: "fas fa-skull", players: "54.8K online", desc: "Precision shooter with unique agents. Ranked tournaments every week.", actionLink: "https://playvalorant.com/", isExternal: true },
+        { id: 10, name: "GENSHIN IMPACT", genre: "Action RPG", icon: "fas fa-dragon", players: "43.1K online", desc: "Open-world anime adventure. Ryan's guild does weekly boss raids.", actionLink: "https://genshin.hoyoverse.com/", isExternal: true },
+        { id: 11, name: "PUBG", genre: "Battle Royale", icon: "fas fa-plane", players: "38.5K online", desc: "Realistic BR action. Ryan's squad dominates Erangel.", actionLink: "https://www.pubg.com/", isExternal: true },
+        { id: 12, name: "GTA V", genre: "Open World", icon: "fas fa-city", players: "62.3K online", desc: "Grand Theft Auto Online. Ryan's crew runs heists and races.", actionLink: "https://www.rockstargames.com/gta-v", isExternal: true }
+    ];
+
+    let premiumUnlocked = false;
+
+    function renderFreeGames() {
+        const grid = document.getElementById("gamesGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        freeGames.forEach(game => {
+            const card = document.createElement("div");
+            card.className = "game-card";
+            if (game.name === "FREE FIRE" || game.name === "CALL OF DUTY" || game.name === "FORTNITE") {
+                card.style.border = "1px solid #ff44cc";
+            }
+            card.innerHTML = `
+                <div class="game-icon"><i class="${game.icon}"></i></div>
+                <div class="game-title">${game.name}</div>
+                <div class="game-desc">${game.desc}</div>
+                <div class="game-stats">
+                    <span><i class="fas fa-users"></i> ${game.players}</span>
+                    <button class="play-glow-btn" data-game="${game.name}" data-url="${game.actionLink}" data-external="${game.isExternal}">▶ PLAY NOW</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+        attachPlayEvents();
+    }
+
+    function renderPremiumGames() {
+        const container = document.getElementById("premiumGamesContainer");
+        if (!container) return;
+        container.innerHTML = "";
+        premiumGames.forEach(game => {
+            const card = document.createElement("div");
+            card.className = "game-card";
+            card.style.border = "1px solid #0afff0";
+            card.innerHTML = `
+                <div class="game-icon"><i class="${game.icon}"></i></div>
+                <div class="game-title">${game.name}</div>
+                <div class="game-desc">${game.desc}</div>
+                <div class="game-stats">
+                    <span><i class="fas fa-users"></i> ${game.players}</span>
+                    <button class="play-glow-btn" data-game="${game.name}" data-url="${game.actionLink}" data-external="${game.isExternal}">▶ PLAY NOW</button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+        attachPlayEvents();
+    }
+
+    function attachPlayEvents() {
+        document.querySelectorAll('.play-glow-btn').forEach(btn => {
+            btn.removeEventListener('click', handlePlayClick);
+            btn.addEventListener('click', handlePlayClick);
+        });
+    }
+
+    function handlePlayClick(e) {
+        const btn = e.currentTarget;
+        const gameName = btn.getAttribute('data-game');
+        const url = btn.getAttribute('data-url');
+        if (url && url !== "#") {
+            showFutureToast(`⟁ LAUNCHING ${gameName} PORTAL | Join Ryan's army!`);
+            window.open(url, '_blank');
+        } else {
+            showFutureToast(`⚡ DEPLOYING ${gameName} • ARENA SIMULATION ACTIVE`);
+        }
+    }
+
+    function unlockPremium(subscriberEmail) {
+        if (premiumUnlocked) return;
+        premiumUnlocked = true;
+        const premiumContainer = document.getElementById("premiumGamesContainer");
+        const premiumCard = document.getElementById("premiumCard");
+        if (premiumContainer) {
+            premiumContainer.classList.add("active");
+            renderPremiumGames();
+        }
+        if (premiumCard) {
+            const badge = premiumCard.querySelector(".locked-badge");
+            if (badge) {
+                badge.innerHTML = '<i class="fas fa-unlock-alt"></i> PREMIUM UNLOCKED! Enjoy 5 extra apps.';
+                badge.style.background = "#0afff0";
+                badge.style.color = "#01020a";
+            }
+            const btn = premiumCard.querySelector("#unlockPremiumBtn");
+            if (btn) btn.textContent = "✓ UNLOCKED";
+            btn.disabled = true;
+        }
+        showFutureToast(`🎉 PREMIUM ACTIVATED for ${subscriberEmail} | Welcome to Ryan+`, 4000);
+    }
+
+    // toast system
+    let toastTimeout;
+    function showFutureToast(msg, duration = 2800) {
+        const toast = document.getElementById("toastFuture");
+        if (!toast) return;
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toast.style.opacity = "1";
+        toast.textContent = `✨ ${msg}`;
+        toastTimeout = setTimeout(() => { toast.style.opacity = "0"; }, duration);
+    }
+
+    // dynamic stats
+    let livePlayers = 13200, globalRank = 1, prizePool = 21800, tourneyCount = 34;
+    const playersEl = document.getElementById("activePlayers");
+    const rankEl = document.getElementById("globalRank");
+    const prizeEl = document.getElementById("prizePool");
+    const tourneyEl = document.getElementById("tourneyCount");
+
+    function updateLiveStats() {
+        livePlayers += Math.floor(Math.random() * 120) - 25;
+        if (livePlayers < 10200) livePlayers = 10600;
+        if (livePlayers > 21000) livePlayers = 19500;
+        playersEl.innerText = livePlayers.toLocaleString();
+        let rankShift = Math.random() > 0.85 ? (Math.random() > 0.5 ? -1 : 1) : 0;
+        let newRank = globalRank + rankShift;
+        if (newRank < 1) newRank = 1;
+        if (newRank > 6) newRank = 6;
+        globalRank = newRank;
+        rankEl.innerText = "#" + globalRank;
+        let poolDelta = (Math.random() - 0.5) * 650;
+        prizePool = Math.max(15000, Math.min(29500, prizePool + poolDelta));
+        prizeEl.innerText = "$" + (Math.floor(prizePool / 100) * 100).toLocaleString();
+        let newTourney = Math.floor(Math.random() * 8) + 30;
+        tourneyEl.innerText = newTourney;
+    }
+    setInterval(updateLiveStats, 6200);
+
+    // live feed messages
+    const feedMessages = [
+        "> 🔥 FREE FIRE: Ryan's squad wins 3 consecutive Booyahs! 1000 diamonds reward.",
+        "> 🔫 Call of Duty: Ryan's Regiment wins faction war! 250 kills lead.",
+        "> 🎮 Fortnite: Creative mode tournament — $500 prize pool this Friday.",
+        "> ⛏️ Minecraft: Ryan's Realm Ender Dragon defeated by community squad.",
+        "> 🎲 ROBLOX: New Ryan Tycoon game reached 10K visits in 24h!",
+        "> 🚌 BUSSID Convoy #RGE : 84 drivers connected — Jakarta to Surabaya route.",
+        "> 💰 PAYBACK 2: Weekly heist challenge live — fastest time wins cash prize.",
+        "> 🏆 Global rank #1 locked by Ryan Enterprise this month!",
+        "> 💎 PREMIUM: Apex Legends & Valorant servers now live for Ryan+ members!"
+    ];
+    let feedIdx = 0;
+    function rotateFeed() {
+        const feedSpan = document.getElementById("feedMsg");
+        if (feedSpan) feedSpan.innerHTML = feedMessages[feed
